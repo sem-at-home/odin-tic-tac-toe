@@ -38,11 +38,16 @@ class Gameboard {
     return (
       [this.board[0][0], this.board[1][1], this.board[2][2]].every((cell) => cell.getValue() === playerId) ||
       [this.board[0][2], this.board[1][1], this.board[2][0]].every((cell) => cell.getValue() === playerId)
-    )
+    );
   }
 
   gameHasEnded(playerId) {
-    return this.completeRow(playerId) || this.completeColumn(playerId) || this.completeDiagonal(playerId)
+    return this.completeRow(playerId) || this.completeColumn(playerId) || this.completeDiagonal(playerId);
+  }
+
+  gameIsTie() {
+    const flattenedGameboard = this.board.flat()
+    return flattenedGameboard.every((cell) => cell.getValue() !== 0)
   }
 
   printBoard() {

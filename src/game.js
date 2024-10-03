@@ -30,11 +30,18 @@ class Game {
     console.log(`${this.getActivePlayer().name} has won!`);
   }
 
+  printGameTie() {
+    this.gameboard.printBoard();
+    console.log(`The game ended in a tie!`);
+  }
+
   playRoundOnEmptyCell(row, column) {
     console.log(`Placing ${this.getActivePlayer().name}'s token into row ${row} and column ${column}...`)
     this.gameboard.placeToken(row, column, this.getActivePlayer());
     if(this.gameboard.gameHasEnded(this.getActivePlayer().id)) {
       this.printGameEnd();
+    } else if(this.gameboard.gameIsTie()) {
+      this.printGameTie();
     } else {
       this.switchPlayerTurn();
       this.printRound();
