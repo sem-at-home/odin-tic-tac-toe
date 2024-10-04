@@ -9,7 +9,6 @@ class Game {
       new Player(playerTwoName, 2)
     ];
     [this.activePlayer] = this.players;
-    this.printRound();
   }
 
   switchPlayerTurn() {
@@ -18,11 +17,6 @@ class Game {
 
   getActivePlayer() {
     return this.activePlayer;
-  }
-
-  printRound() {
-    this.gameboard.printBoard();
-    console.log(`${this.getActivePlayer().name}'s turn`);
   }
 
   printGameEnd() {
@@ -44,7 +38,6 @@ class Game {
       this.printGameTie();
     } else {
       this.switchPlayerTurn();
-      this.printRound();
     }
   }
 
